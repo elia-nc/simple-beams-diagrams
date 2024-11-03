@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Two-Column Layout</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <div class="column left-column">
+      <img src="" class="column-image" id="dynamicImage">
+      <div class="option-menu">
+        <label for="group">Tipo di trave: </label>
+        <select id="group" onchange="updateMenu()">
+            <option value="" selected disabled>-- Seleziona trave --</option>
+            <option value="simpleBeam">Trave appoggiata</option>
+            <option value="fixedBeam">Trave incastrata</option>
+            <option value="fixedSimpleBeam">Trave incastro - appoggio</option>
+            <option value="cantilever">Trave a mensola</option>
+        </select>
+
+        <label for="option">Tipo di carico: </label>
+        <select id="option" disabled onchange="updateSubmenu()">
+            <option value="">-- Seleziona carico --</option>
+        </select>
+      </div>
+      
+      <h3>Input Data</h3>
+
+      <div class="input-group">
+        <span class="label" id="dynamicLabel"></span>
+        <input type="number" class="input-field" placeholder="Enter number 1" id="input1">
+        <span class="unit" id="dynamicUnit"></span>
+      </div>
+      <div class="input-group">
+        <span class="label">Lunghezza (L):</span>
+        <input type="number" class="input-field" placeholder="Enter number 2" id="input2">
+        <span class="unit">\( m \)</span>
+      </div>
+      <div class="input-group">
+        <span class="label">Momento d'inerzia (J):</span>
+        <input type="number" class="input-field" placeholder="Enter number 3" id="input3">
+        <span class="unit">\( m^4 \)</span>
+      </div>
+      <div class="input-group">
+        <span class="label">Modulo di elasticità (E):</span>
+        <input type="number" class="input-field" placeholder="Enter number 4" id="input4">
+        <span class="unit">\( kN / m^2 \) </span>
+      </div>
+
+      <button class="full-width-button" id="the_button" onclick="alertLoadUnassigned()">Calcola</button>
+
+      <div class="output-group">
+        <h3>Output Data</h3>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; text-align: center; line-height: 2;">
+          <p class="output">\( T_{max}= \)<span id="Tmax">_____</span> \( kN \)</p>
+          <p class="output">\( D_{max}= \)<span id="Dmax">_____</span> \( m \)</p>
+          <p class="output">\( M_{max}^{(+)}= \)<span id="Mmax_pos">_____</span> \( kN \cdot m \)</p>
+          <p class="output">\( M_{max}^{(-)}= \)<span id="Mmax_neg">_____</span> \( kN \cdot m \)</p>
+        </div>
+            
+      </div>
+    </div>
+    
+    <div class="column right-column">
+      <div id="chartContainer">
+        <h3>Diagrammi</h3>
+        <div id="chartContainer1">      
+          <h4>Taglio (T)</h4>
+          <canvas id="Chart1"></canvas>
+        </div>
+        <div id="chartContainer2">
+          <h4>Momento flettente (M)</h4>
+          <canvas id="Chart2"></canvas>
+        </div>
+        <div id="chartContainer3">
+          <h4>Deformata (D)</h4>
+          <canvas id="Chart3"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>  
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script src="computation_and_charts.js"></script>
+  <script src="menu.js"></script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+/* Reset default margin and padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* General styling improvements */
+body {
+    font-family: 'Roboto', sans-serif; /* Apply a modern font */
+    background-color: #f9f9f9; /* Light background for contrast */
+    color: #333; /* Dark text for readability */
+}
+
+/* Main container */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Column styles */
+.column {
+  flex: 1;
+  padding: 40px; /* Reduced padding for a more compact look */
+  min-width: 200px; /* Minimum width for responsiveness */
+}
+
+/* Styles for left and right columns */
+.left-column {
+  background-color: #f1f1f1;
+}
+
+.right-column {
+  background-color: #e2e2e2;
+}
+
+/* Image styling with margin for spacing */
+.column-image {
+  width: 60%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+/* Option menu styling with margin */
+.option-menu {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.option-menu label {
+  display: block; /* Makes labels stack vertically */
+  margin-bottom: 10px; /* Space between the label and select */
+  font-size: 18px; /* Increases label font size */
+}
+
+.option-menu select {
+  width: 100%; /* Makes the select elements full width */
+  padding: 10px; /* Adds padding inside the select elements */
+  font-size: 16px; /* Increases font size for select options */
+  margin-bottom: 20px; /* Space between the two select elements */
+  border: 1px solid #ccc; /* Optional: Add border for better visibility */
+  border-radius: 5px; /* Optional: Round the corners of the select */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add subtle shadow */
+}
+
+
+/* Title margin for spacing */
+h3 {
+  margin-bottom: 20px;
+}
+
+/* Input group styling */
+.input-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+/* Input field styling with improved aesthetics */
+.input-field {
+  width: 25%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.3s;
+}
+
+.input-field:focus {
+  border-color: #4CAF50;
+  outline: none;
+}
+
+/* Labels styling */
+.label {
+  margin-right: 10px;
+  text-align: right;
+  flex-basis: 30%;
+}
+
+/* Unit styling */
+.unit {
+  margin-left: 10px;
+  text-align: left;
+  flex-basis: 30%;
+}
+
+/* Additional styles for right column */
+.right-column h4 {
+  margin-bottom: 10px;
+}
+
+.right-column p {
+  margin-bottom: 20px;
+}
+
+/* Full-width button styling */
+.full-width-button {
+  width: 100%;
+  padding: 15px;
+  text-align: center;
+  font-size: 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.full-width-button:hover {
+  background-color: #45a049;
+  transform: translateY(-2px);
+}
+
+/* Output group styles */
+.output-group {
+  margin-top: 50px;
+}
+
+.output {
+  font-size: 20px; /* Set the font size for output */
+  padding-top: 20px;
+}
+
+/* Responsive layout for smaller screens */
+@media (max-width: 1000px) {
+  .container {
+    flex-direction: column; /* Stack columns vertically */
+  }
+
+  .column {
+    width: 100%; /* Full width for each column on mobile */
+  }
+
+  .input-field {
+    width: 60%; /* Set input width to 60% for better fit */
+    max-width: 300px; /* Optional: Set a max-width for input fields */
+    margin: 0 auto; /* Center input fields */
+  }
+
+  #Chart1, #Chart2, #Chart3 {
+    display: block;
+    margin: 0 auto; /* Center the canvas */
+    width: 100%; /* Keep width for charts */
+    height: 500px; /* Maintain height for charts */
+  }
+}
+
+/* Centering only the canvas (charts) */
+#Chart1, #Chart2, #Chart3 {
+  display: block;
+  margin: 0 auto; /* Center the canvas */
+  width: 100%; /* Keep width for charts */
+  height: 300px; /* Maintain height for charts */
+}
+
+/* Margin adjustments for output text */
+#Tmax, #Mmax_pos, #Mmax_neg, #Dmax {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+/* Additional styles for headings and paragraphs */
+h4 {
+  margin: 20px 0 10px; /* Adjust margin for headings */
+}
+
+p {
+  margin-bottom: 20px; /* Bottom margin for paragraphs */
+}
+
