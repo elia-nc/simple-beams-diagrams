@@ -1,6 +1,8 @@
 // JS CODE FOR UPDATING UI FROM SELECT MENU IN THE HTML FILE
 // Here we have functions and other things in order to update variables, images, menu and other to the values selcted in the first two select menu
 
+// ----------------------------------------------------------------------------------------------------------------------------
+
 // Resetta tutti i campi del form al caricamento della pagina
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("input1").value = "";
@@ -63,7 +65,6 @@ function alertLoadUnassigned(){
 // function to update the image based on the option selected in the first beam menu
 function updateMenu() {
     const selectedGroup = document.getElementById("group").value;
-    console.log(selectedGroup)
     const dynamicImage = document.getElementById("dynamicImage");
   
     // Update based on selected option
@@ -95,7 +96,7 @@ function updateMenu() {
 function updateSubmenu() {
     const selectedOption = document.getElementById("option").value;
     const selectedGroup = document.getElementById("group").value;
-
+    
     const dynamicImage = document.getElementById("dynamicImage");
 
     updateLoad(selectedOption);  // change the type of loadand the unit measure corresponding to the load selected
