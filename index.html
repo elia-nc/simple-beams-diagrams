@@ -12,19 +12,23 @@
     <div class="column left-column">
       <img src="" class="column-image" id="dynamicImage">
       <div class="option-menu">
-        <label for="group">Tipo di trave: </label>
-        <select id="group" onchange="updateMenu()">
-            <option value="" selected disabled>-- Seleziona trave --</option>
-            <option value="simpleBeam">Trave appoggiata</option>
-            <option value="fixedBeam">Trave incastrata</option>
-            <option value="fixedSimpleBeam">Trave incastro - appoggio</option>
-            <option value="cantilever">Trave a mensola</option>
-        </select>
+        <form id="groupForm">
+          <label for="group">Tipo di trave: </label>
+          <select id="group" onchange="updateMenu()">
+              <option value="" selected disabled>-- Seleziona trave --</option>
+              <option value="simpleBeam">Trave appoggiata</option>
+              <option value="fixedBeam">Trave incastrata</option>
+              <option value="fixedSimpleBeam">Trave incastro - appoggio</option>
+              <option value="cantilever">Trave a mensola</option>
+          </select>
+        </form>
 
-        <label for="option">Tipo di carico: </label>
-        <select id="option" disabled onchange="updateSubmenu()">
-            <option value="">-- Seleziona carico --</option>
-        </select>
+        <form id="optionForm">
+          <label for="option">Tipo di carico: </label>
+          <select id="option" disabled onchange="updateSubmenu()">
+              <option value="">-- Seleziona carico --</option>
+          </select>
+        </form>
       </div>
       
       <h3>Input Data</h3>
@@ -37,28 +41,44 @@
       <div class="input-group">
         <span class="label">Lunghezza (L):</span>
         <input type="number" class="input-field" placeholder="Enter number 2" id="input2">
-        <span class="unit">\( m \)</span>
+        <span class="unit" id="beamLengthUnit"></span>
       </div>
       <div class="input-group">
         <span class="label">Momento d'inerzia (J):</span>
         <input type="number" class="input-field" placeholder="Enter number 3" id="input3">
-        <span class="unit">\( m^4 \)</span>
+        <span class="unit" id="inertiaUnit"></span>
       </div>
       <div class="input-group">
         <span class="label">Modulo di elasticità (E):</span>
         <input type="number" class="input-field" placeholder="Enter number 4" id="input4">
-        <span class="unit">\( kN / m^2 \) </span>
+        <span class="unit" id="elasticityUnit"></span>
       </div>
 
       <button class="full-width-button" id="the_button" onclick="alertLoadUnassigned()">Calcola</button>
 
+      <form id="unitForm">
+        <div class="unit-menu">
+          <label>Scegli unità di misura: </label>
+          <select id="forceUnitMenu" onchange="updateUnitOfMeasure()">
+            <option value="kN" selected>kN</option>
+            <option value="daN">daN</option>
+            <option value="N">N</option>
+          </select>
+          <select id="lengthUnitMenu" onchange="updateUnitOfMeasure()">
+            <option value="m" selected>m</option>
+            <option value="cm">cm</option>
+            <option value="mm">mm</option>
+          </select>
+        </div>
+    </form>
+
       <div class="output-group">
         <h3>Output Data</h3>
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; text-align: center; line-height: 2;">
-          <p class="output">\( T_{max}= \)<span id="Tmax">_____</span> \( kN \)</p>
-          <p class="output">\( D_{max}= \)<span id="Dmax">_____</span> \( m \)</p>
-          <p class="output">\( M_{max}^{(+)}= \)<span id="Mmax_pos">_____</span> \( kN \cdot m \)</p>
-          <p class="output">\( M_{max}^{(-)}= \)<span id="Mmax_neg">_____</span> \( kN \cdot m \)</p>
+          <p class="output">\( T_{max}= \)<span id="Tmax">_____</span> <span id="shearUnit"></span></p>
+          <p class="output">\( D_{max}= \)<span id="Dmax">_____</span> <span id="defUnit"></span></p>
+          <p class="output">\( M_{max}^{(+)}= \)<span id="Mmax_pos">_____</span> <span id="posMomUnit"></span></p>
+          <p class="output">\( M_{max}^{(-)}= \)<span id="Mmax_neg">_____</span> <span id="negMomUnit"></span></p>
         </div>
             
       </div>
@@ -86,6 +106,7 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>  
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   <script src="computation_and_charts.js"></script>
-  <script src="menu.js"></script>
+  <script src="user-interface.js"></script>
+  <script src="units.js"></script>
 </body>
 </html>

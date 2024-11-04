@@ -65,6 +65,18 @@ body {
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add subtle shadow */
 }
 
+.unit-menu {
+  text-align: center; 
+  margin-top: 20px;
+}
+
+.unit-menu select {
+  padding: 10px; /* Adds padding inside the select elements */
+  border: 1px solid #ccc; /* Optional: Add border for better visibility */
+  border-radius: 5px; /* Optional: Round the corners of the select */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add subtle shadow */
+}
+
 
 /* Title margin for spacing */
 h3 {

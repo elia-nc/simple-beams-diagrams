@@ -1,3 +1,23 @@
+// JS CODE FOR UPDATING UI FROM SELECT MENU IN THE HTML FILE
+// Here we have functions and other things in order to update variables, images, menu and other to the values selcted in the first two select menu
+
+// Resetta tutti i campi del form al caricamento della pagina
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("input1").value = "";
+    document.getElementById("input2").value = "";
+    document.getElementById("input3").value = "";
+    document.getElementById("input4").value = "";
+
+    document.getElementById("groupForm").reset();
+    document.getElementById("optionForm").reset();
+
+    // first call to show the unit of measure in the page
+    updateUnitOfMeasure()
+});
+
+// ----------------------------------------------------------------------------------------------------------------------------
+
+// 1: ADAPT SECOND MENU TO THE CHOICE MADE IN THE FIRST
 // Define options for each group
 const options = {
     simpleBeam: ["Carico uniforme", "Carico concentrato"],
@@ -31,6 +51,11 @@ groupSelect.addEventListener('change', function() {
     }
 });
 
+// ----------------------------------------------------------------------------------------------------------------------------
+
+// 2: UPDATE TYPE OF BEAM IMAGE BASED ON THE FIRST MENU
+
+// alert function to call when the load is not assigned
 function alertLoadUnassigned(){
     alert("Tipo di trave o di carico non assegnato.")
 }
@@ -54,11 +79,16 @@ function updateMenu() {
 
     document.getElementById("the_button").onclick = alertLoadUnassigned;
 
+    // when i select the type of beam i need to reselect the type of load so i need to wipe out the previous load
     const dynamicLabel = document.getElementById("dynamicLabel");
     const dynamicUnit = document.getElementById("dynamicUnit");
     dynamicLabel.textContent = "";
     dynamicUnit.textContent = "";
 }
+
+// ----------------------------------------------------------------------------------------------------------------------------
+
+// 3: UPDATE IMAGES, LABELS AND UNIT BASED ON THE LOAD CHOICE IN THE SECOND MENU
 
 // Function to update the image, label, and unit based on the selected option
 // Possible options: "Carico uniforme", "Carico lineare", "Forza concentrata", "Coppia concentrata"
@@ -67,25 +97,8 @@ function updateSubmenu() {
     const selectedGroup = document.getElementById("group").value;
 
     const dynamicImage = document.getElementById("dynamicImage");
-    const dynamicLabel = document.getElementById("dynamicLabel");
-    const dynamicUnit = document.getElementById("dynamicUnit");
-  
-    // Update based on selected option
-    if (selectedOption === "Carico uniforme") {
-        dynamicLabel.textContent = "Carico distribuito (q):";
-        dynamicUnit.textContent = "\\( kN / m \\)";
-    } else if (selectedOption === "Carico lineare") {
-        dynamicLabel.textContent = "Carico lineare (q):";
-        dynamicUnit.textContent = "\\( kN / m \\)";
-    } else if (selectedOption === "Carico lineare") {
-        dynamicLabel.textContent = "Forza concentrata (F):";
-        dynamicUnit.textContent = "\\( kN \\)";
-    } else if (selectedOption === "Carico lineare") {
-        dynamicLabel.textContent = "Coppia conncetrata (C):";
-        dynamicUnit.textContent = "\\( kN \cdot m \\)";
-    }
-        
-    MathJax.typesetPromise([dynamicUnit]).catch((err) => console.log(err.message));  // serve per forzare l'utilizzo di latex
+
+    updateLoad(selectedOption);  // change the type of loadand the unit measure corresponding to the load selected
 
     if (selectedGroup === "simpleBeam") {
         if (selectedOption === "Carico uniforme") {
@@ -136,3 +149,4 @@ function updateSubmenu() {
         
     }
 }
+

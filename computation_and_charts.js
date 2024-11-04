@@ -13,7 +13,10 @@ function getData() {
 
     // Input validation
     if (isNaN(load) || isNaN(L) || L <= 0) {
-        alert("Inserire valori (positivi) almeno per il carico e la lunghezza");
+        alert("Inserire valori (positivi) almeno per il carico e la lunghezza.");
+        return;
+    } else if (E <= 0, J <= 0) {
+        alert("Inserire valori positivi per E e J, o non inserirne.");
         return;
     }
 
