@@ -9,7 +9,7 @@ let Chart3;
 let ctx;
 
 // plot shear data in charts
-function plotShear(xVal, yVal) {
+function plotShear(xVal, yVal, discontinuity) {
     // resetting previous charts if existing
     resetChart(Chart1, "Chart1", "chartContainer1");
     // Plotting the data of shear
@@ -26,6 +26,7 @@ function plotShear(xVal, yVal) {
                 backgroundColor: 'rgba(237, 28, 36, 0.2)', // Colore trasparente per l'area sottesa
                 fill: true, // Abilita il riempimento dell'area
                 pointRadius: 0, // Can be adjusted based on preference
+                stepped: discontinuity,
             }]
         },
         options: {
@@ -49,7 +50,8 @@ function plotShear(xVal, yVal) {
             },
             scales: {
                 y: {
-                    beginAtZero: true,
+                    beginAtZero: true,      // Forces the y-axis to include 0
+                    suggestedMin: 0,        // Additional way to ensure 0 is shown
                     title: {
                         display: true,
                         text: 'Taglio (T)'
@@ -118,7 +120,8 @@ function plotBendingMoment(xVal, yVal) {
             },
             scales: {
                 y: {
-                    beginAtZero: true,
+                    beginAtZero: true,      // Forces the y-axis to include 0
+                    suggestedMin: 0,        // Additional way to ensure 0 is shown
                     reverse: true, // Invert the y-axis
                     title: {
                         display: true,
@@ -187,7 +190,8 @@ function plotDeformationShape(xVal, yVal) {
             },
             scales: {
                 y: {
-                    beginAtZero: true,
+                    beginAtZero: true,      // Forces the y-axis to include 0
+                    suggestedMin: 0,        // Additional way to ensure 0 is shown
                     title: {
                         display: true,
                         text: 'Deformata (D)'

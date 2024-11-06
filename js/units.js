@@ -165,7 +165,7 @@ function lengthConversion(number, power, numerator) {
 // needed to prevent using weird numbers like 23.000001 or 0.02566000005
 function autoRound(num) {
     // Gestiamo i numeri piccoli per evitare errori di precisione
-    if (Math.abs(num) < 1e-10) return 0;
+    if (Math.abs(num) < 1e-12) return 0;
 
     // Convertiamo il numero in stringa con una precisione di 15 cifre
     let preciseStr = num.toPrecision(15);
@@ -192,12 +192,12 @@ function updateLoad(selectedOption) {
     } else if (selectedOption === "Carico lineare") {
         dynamicLabel.textContent = "Carico lineare (q):";
         dynamicUnit.textContent = `\\( ${currentForceUnit} / ${currentLengthUnit} \\)`;
-    } else if (selectedOption === "Carico lineare") {
-        dynamicLabel.textContent = "Forza concentrata (F):";
+    } else if (selectedOption === "Carico concentrato") {
+        dynamicLabel.textContent = "Carico concentrato (Q):";
         dynamicUnit.textContent = `\\( ${currentForceUnit} \\)`;
-    } else if (selectedOption === "Carico lineare") {
-        dynamicLabel.textContent = "Coppia concetrata (C):";
-        dynamicUnit.textContent = `\\( ${currentForceUnit} \cdot ${currentLengthUnit} \\)`;
+    } else if (selectedOption === "Momento concentrato") {
+        dynamicLabel.textContent = "Momento concentrato (M):";
+        dynamicUnit.textContent = `\\( ${currentForceUnit} \\cdot ${currentLengthUnit} \\)`;
     }
         
     MathJax.typesetPromise([dynamicUnit]).catch((err) => console.log(err.message));  // serve per forzare l'utilizzo di latex

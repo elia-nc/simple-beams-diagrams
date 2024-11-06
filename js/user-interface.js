@@ -25,7 +25,7 @@ const options = {
     simpleBeam: ["Carico uniforme", "Carico concentrato"],
     fixedBeam: ["Carico uniforme", "Carico concentrato"],
     fixedSimpleBeam: ["Carico uniforme", "Carico concentrato"],
-    cantilever: ["Carico uniforme"],
+    cantilever: ["Carico uniforme", "Carico concentrato", "Momento concentrato"],
 };
 
 const groupSelect = document.getElementById('group');
@@ -74,9 +74,9 @@ function updateMenu() {
       dynamicImage.src = "./images/FixedBeam.png";
     } else if (selectedGroup === "cantilever") {
         dynamicImage.src = "./images/Cantilever.png";
-      } else if (selectedGroup === "fixedSimpleBeam") {
+    } else if (selectedGroup === "fixedSimpleBeam") {
         dynamicImage.src = "./images/FixedSimpleBeam.png";
-      }
+    }
 
     document.getElementById("the_button").onclick = alertLoadUnassigned;
 
@@ -105,34 +105,25 @@ function updateSubmenu() {
         if (selectedOption === "Carico uniforme") {
             dynamicImage.src = "./images/SimpleBeamUniformLoad.png";
             document.getElementById("the_button").onclick = computeSimpleBeamUniformLoad;
-        } else if (selectedOption === "Carico lineare") {
-            return
-        } else if (selectedOption === "Forza concentrata") {
-            return
-        } else if (selectedOption === "Coppia conncetrata") {
-            return
-        }
+        } else if (selectedOption === "Carico concentrato") {
+            dynamicImage.src = "./images/SimpleBeamForce.png";
+            document.getElementById("the_button").onclick = computeSimpleBeamForce;
+        } 
+
     } else if (selectedGroup === "fixedBeam") {
         if (selectedOption === "Carico uniforme") {
             dynamicImage.src = "./images/FixedBeamUniformLoad.png";
             document.getElementById("the_button").onclick = computeFixedBeamUniformLoad;
-        } else if (selectedOption === "Carico lineare") {
-            return
-        } else if (selectedOption === "Forza concentrata") {
-            return
-        } else if (selectedOption === "Coppia conncetrata") {
-            return
+        } else if (selectedOption === "Carico concentrato") {
+            dynamicImage.src = "./images/FixedBeamForce.png";
+            document.getElementById("the_button").onclick = computeFixedBeamForce;
         }
         
     } else if (selectedGroup === "fixedSimpleBeam") {
         if (selectedOption === "Carico uniforme") {
             dynamicImage.src = "./images/FixedSimpleBeamUniformLoad.png";
             document.getElementById("the_button").onclick = computeFixedSimpleBeamUniformLoad;
-        } else if (selectedOption === "Carico lineare") {
-            return
-        } else if (selectedOption === "Forza concentrata") {
-            return
-        } else if (selectedOption === "Coppia conncetrata") {
+        } else if (selectedOption === "Carico concentrato") {
             return
         }
         
@@ -140,12 +131,12 @@ function updateSubmenu() {
         if (selectedOption === "Carico uniforme") {
             dynamicImage.src = "./images/CantileverUniformLoad.png";
             document.getElementById("the_button").onclick = computeCantileverUniformLoad;
-        } else if (selectedOption === "Carico lineare") {
-            return
-        } else if (selectedOption === "Forza concentrata") {
-            return
-        } else if (selectedOption === "Coppia conncetrata") {
-            return
+        } else if (selectedOption === "Carico concentrato") {
+            dynamicImage.src = "./images/CantileverForce.png";
+            document.getElementById("the_button").onclick = computeCantileverForce;
+        } else if (selectedOption === "Momento concentrato") {
+            dynamicImage.src = "./images/CantileverMoment.png";
+            document.getElementById("the_button").onclick = computeCantileverMoment;
         }
         
     }
