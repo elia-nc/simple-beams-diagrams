@@ -181,6 +181,71 @@ function computeSimpleBeamForce() {
     plotDeformationShape(x_Values, defShape);
 }
 
+function computeSimpleBeamMoment() {
+    // get data with the correct type of load
+    const [M, L, E, J, spacing, roundingFactor] = getData();
+
+    // -----------------------
+    // SHEAR
+    // -----------------------
+    let x_Values = [];
+    const shearForce = [];
+
+    for (let x = 0; x <= L; x += spacing) {
+        x = autoRound(x);
+        x_Values.push(Math.round(x * roundingFactor) / roundingFactor);
+        shearForce.push(0);
+    }
+
+    // add max values
+    Tmax = 0;
+    document.getElementById("Tmax").innerText = Tmax.toExponential(2);
+
+    // plotting shear
+    plotShear(x_Values, shearForce);
+    
+    // -----------------------
+    // BENDING MOMENT
+    // -----------------------
+    x_Values = [];
+    const bendingMoment = [];
+
+    for (let x = 0; x <= L; x += spacing) {
+        x = autoRound(x);
+        x_Values.push(Math.round(x * roundingFactor) / roundingFactor);
+        bendingMoment.push(- M * x / L);
+    }
+
+    // add max values
+    Mmax_pos = 0;
+    Mmax_neg = - M;
+    document.getElementById("Mmax_pos").innerText = Mmax_pos;
+    document.getElementById("Mmax_neg").innerText = Mmax_neg.toExponential(2);
+
+    // plotting bending moment
+    plotBendingMoment(x_Values, bendingMoment);
+
+    // -----------------------
+    // DEFORMATION SHAPE
+    // -----------------------
+    x_Values = [];
+    const defShape = [];
+
+    for (let x = 0; x <= L; x += spacing) {
+        x = autoRound(x);
+        x_Values.push(Math.round(x * roundingFactor) / roundingFactor);
+        defShape.push(- (M * x * (x**2 /(6*L) - L / 6)) / (E * J));
+    }
+    
+    // add max values
+    let x_f = (L**2 / 3)^(1/2);
+    freccia = ((M * x_f * (x_f**2 / L - L / 6)) / (E * J));
+    document.getElementById("Dmax").innerText = freccia.toExponential(2);;
+
+    // plotting def shape
+    plotDeformationShape(x_Values, defShape);
+}
+
 // -----------------------
 // TRAVE INCASTRATA
 // -----------------------
@@ -396,6 +461,71 @@ function computeFixedSimpleBeamUniformLoad() {
 
     // add max values
     freccia = (q * L / (8 * E * J)) * (L**4 / 3 - 5 * L * 125 * L**3 / (6 * 512) + L**2 * 25 * L**2 / 128);
+    document.getElementById("Dmax").innerText = freccia.toExponential(2);;
+
+    // plotting def shape
+    plotDeformationShape(x_Values, defShape);
+}
+
+function computeFixedSimpleBeamMoment() {
+    // get data with the correct type of load
+    const [M, L, E, J, spacing, roundingFactor] = getData();
+
+    // -----------------------
+    // SHEAR
+    // -----------------------
+    let x_Values = [];
+    const shearForce = [];
+
+    for (let x = 0; x <= L; x += spacing) {
+        x = autoRound(x);
+        x_Values.push(Math.round(x * roundingFactor) / roundingFactor);
+        shearForce.push(0);
+    }
+
+    // add max values
+    Tmax = 0;
+    document.getElementById("Tmax").innerText = Tmax.toExponential(2);
+
+    // plotting shear
+    plotShear(x_Values, shearForce);
+    
+    // -----------------------
+    // BENDING MOMENT
+    // -----------------------
+    x_Values = [];
+    const bendingMoment = [];
+
+    for (let x = 0; x <= L; x += spacing) {
+        x = autoRound(x);
+        x_Values.push(Math.round(x * roundingFactor) / roundingFactor);
+        bendingMoment.push(M/2 - 3*M*x / (2*L));
+    }
+
+    // add max values
+    Mmax_pos = M/2;
+    Mmax_neg = - M;
+    document.getElementById("Mmax_pos").innerText = Mmax_pos;
+    document.getElementById("Mmax_neg").innerText = Mmax_neg.toExponential(2);
+
+    // plotting bending moment
+    plotBendingMoment(x_Values, bendingMoment);
+
+    // -----------------------
+    // DEFORMATION SHAPE
+    // -----------------------
+    x_Values = [];
+    const defShape = [];
+
+    for (let x = 0; x <= L; x += spacing) {
+        x = autoRound(x);
+        x_Values.push(Math.round(x * roundingFactor) / roundingFactor);
+        defShape.push((M * x**2 * (1 - x / L) / (4 * E * J)));                       
+    }
+    
+    // add max values
+    let x_f = 2 * L / 3;
+    freccia = 0;
     document.getElementById("Dmax").innerText = freccia.toExponential(2);;
 
     // plotting def shape

@@ -22,9 +22,9 @@ document.addEventListener("DOMContentLoaded", function() {
 // 1: ADAPT SECOND MENU TO THE CHOICE MADE IN THE FIRST
 // Define options for each group
 const options = {
-    simpleBeam: ["Carico uniforme", "Carico concentrato"],
+    simpleBeam: ["Carico uniforme", "Carico concentrato", "Momento concentrato"],
     fixedBeam: ["Carico uniforme", "Carico concentrato"],
-    fixedSimpleBeam: ["Carico uniforme", "Carico concentrato"],
+    fixedSimpleBeam: ["Carico uniforme", "Momento concentrato"],
     cantilever: ["Carico uniforme", "Carico concentrato", "Momento concentrato"],
 };
 
@@ -108,6 +108,9 @@ function updateSubmenu() {
         } else if (selectedOption === "Carico concentrato") {
             dynamicImage.src = "./images/SimpleBeamForce.png";
             document.getElementById("the_button").onclick = computeSimpleBeamForce;
+        } else if (selectedOption === "Momento concentrato") {
+            dynamicImage.src = "./images/SimpleBeamMoment.png";
+            document.getElementById("the_button").onclick = computeSimpleBeamMoment;
         } 
 
     } else if (selectedGroup === "fixedBeam") {
@@ -123,8 +126,9 @@ function updateSubmenu() {
         if (selectedOption === "Carico uniforme") {
             dynamicImage.src = "./images/FixedSimpleBeamUniformLoad.png";
             document.getElementById("the_button").onclick = computeFixedSimpleBeamUniformLoad;
-        } else if (selectedOption === "Carico concentrato") {
-            return
+        } else if (selectedOption === "Momento concentrato") {
+            dynamicImage.src = "./images/FixedSimpleBeamMoment.png";
+            document.getElementById("the_button").onclick = computeFixedSimpleBeamMoment;
         }
         
     } else if (selectedGroup === "cantilever") {
