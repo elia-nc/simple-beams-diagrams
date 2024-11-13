@@ -9,7 +9,7 @@
 <body>
 
   <div class="container">
-    <div class="column left-column">
+    <div class="column">
       <img src="" class="column-image" id="dynamicImage">
       <div class="option-menu">
         <form id="groupForm">
@@ -35,22 +35,22 @@
 
       <div class="input-group">
         <span class="label" id="dynamicLabel"></span>
-        <input type="number" class="input-field" placeholder="Enter number 1" id="input1">
+        <input type="number" class="input-field" placeholder="" id="input1">
         <span class="unit" id="dynamicUnit"></span>
       </div>
       <div class="input-group">
-        <span class="label">Lunghezza (L):</span>
-        <input type="number" class="input-field" placeholder="Enter number 2" id="input2">
+        <span class="label">L = </span>
+        <input type="number" class="input-field" placeholder="" id="input2">
         <span class="unit" id="beamLengthUnit"></span>
       </div>
       <div class="input-group">
-        <span class="label">Momento d'inerzia (J):</span>
-        <input type="number" class="input-field" placeholder="Enter number 3" id="input3">
+        <span class="label">J = </span>
+        <input type="number" class="input-field" placeholder="" id="input3">
         <span class="unit" id="inertiaUnit"></span>
       </div>
       <div class="input-group">
-        <span class="label">Modulo di elasticità (E):</span>
-        <input type="number" class="input-field" placeholder="Enter number 4" id="input4">
+        <span class="label">E = </span>
+        <input type="number" class="input-field" placeholder="" id="input4">
         <span class="unit" id="elasticityUnit"></span>
       </div>
 
@@ -74,17 +74,15 @@
 
       <div class="output-group">
         <h3>Output Data</h3>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; text-align: center; line-height: 2;">
-          <p class="output">\( T_{max}= \)<span id="Tmax">_____</span> <span id="shearUnit"></span></p>
-          <p class="output">\( D_{max}= \)<span id="Dmax">_____</span> <span id="defUnit"></span></p>
-          <p class="output">\( M_{max}^{(+)}= \)<span id="Mmax_pos">_____</span> <span id="posMomUnit"></span></p>
-          <p class="output">\( M_{max}^{(-)}= \)<span id="Mmax_neg">_____</span> <span id="negMomUnit"></span></p>
+        <div>
+          <p class="output">\( T_{max}= \) <span id="Tmax">_____</span> <span id="shearUnit"></span></p>
+          <p class="output">\( D_{max}= \) <span id="Dmax">_____</span> <span id="defUnit"></span></p>
+          <p class="output">\( M_{max}^{(+)}= \) <span id="Mmax_pos">_____</span> <span id="posMomUnit"></span></p>
+          <p class="output">\( M_{max}^{(-)}= \) <span id="Mmax_neg">_____</span> <span id="negMomUnit"></span></p>
         </div>
-            
       </div>
-    </div>
-    
-    <div class="column right-column">
+      
+
       <div id="chartContainer">
         <h3>Diagrammi</h3>
         <div id="chartContainer1">      

@@ -1,3 +1,7 @@
+/* ---------------------------------------------------
+/* GENERAL STYLES
+/* --------------------------------------------------- */
+
 /* Reset default margin and padding */
 * {
   margin: 0;
@@ -5,85 +9,89 @@
   box-sizing: border-box;
 }
 
-/* General styling improvements */
+/* Body styling */
 body {
-    font-family: 'Roboto', sans-serif; /* Apply a modern font */
-    background-color: #f9f9f9; /* Light background for contrast */
-    color: #333; /* Dark text for readability */
+  font-family: 'Roboto', sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
 }
 
-/* Main container */
+/* Margin and font adjustments for text elements */
+h3, h4, p {
+  margin-bottom: 1.25rem;
+}
+
+select, p, label, form {
+  font-size: 0.75rem;
+}
+
+/* Main container for single-column layout */
 .container {
-  display: flex;
-  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-/* Column styles */
+/* Column styling for single-column layout */
 .column {
-  flex: 1;
-  padding: 40px; /* Reduced padding for a more compact look */
-  min-width: 200px; /* Minimum width for responsiveness */
+  width: 100%;
+  padding: 20px;
+  min-width: 200px;
 }
 
-/* Styles for left and right columns */
-.left-column {
-  background-color: #f1f1f1;
-}
-
-.right-column {
-  background-color: #e2e2e2;
-}
-
-/* Image styling with margin for spacing */
+/* Image styling */
 .column-image {
   width: 60%;
   height: auto;
   display: block;
-  margin: 0 auto;
-  margin-bottom: 20px;
+  margin: 0 auto 20px;
 }
 
-/* Option menu styling with margin */
+/* ---------------------------------------------------
+/* MENU STYLES
+/* --------------------------------------------------- */
+
 .option-menu {
   width: 100%;
   margin-bottom: 20px;
 }
 
 .option-menu label {
-  display: block; /* Makes labels stack vertically */
-  margin-bottom: 10px; /* Space between the label and select */
-  font-size: 18px; /* Increases label font size */
+  display: block;
+  margin-bottom: 10px;
+  font-size: 18px;
 }
 
 .option-menu select {
-  width: 100%; /* Makes the select elements full width */
-  padding: 10px; /* Adds padding inside the select elements */
-  font-size: 16px; /* Increases font size for select options */
-  margin-bottom: 20px; /* Space between the two select elements */
-  border: 1px solid #ccc; /* Optional: Add border for better visibility */
-  border-radius: 5px; /* Optional: Round the corners of the select */
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add subtle shadow */
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .unit-menu {
-  text-align: center; 
-  margin-top: 20px;
+  text-align: center;
+  margin-top: 50px;
+}
+
+#forceUnitMenu {
+  margin: 0 10px;
 }
 
 .unit-menu select {
-  padding: 10px; /* Adds padding inside the select elements */
-  border: 1px solid #ccc; /* Optional: Add border for better visibility */
-  border-radius: 5px; /* Optional: Round the corners of the select */
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add subtle shadow */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+/* ---------------------------------------------------
+/* INPUT STYLES
+/* --------------------------------------------------- */
 
-/* Title margin for spacing */
-h3 {
-  margin-bottom: 20px;
-}
-
-/* Input group styling */
 .input-group {
   display: flex;
   align-items: center;
@@ -91,9 +99,11 @@ h3 {
   margin-bottom: 15px;
 }
 
-/* Input field styling with improved aesthetics */
+/* Input field styling */
 .input-field {
-  width: 25%;
+  width: 60%;
+  max-width: 300px;
+  margin: 0 auto;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -105,27 +115,21 @@ h3 {
   outline: none;
 }
 
-/* Labels styling */
+/* ---------------------------------------------------
+/* INTERNAL ELEMENTS
+/* --------------------------------------------------- */
+
+/* Label and unit styling */
 .label {
   margin-right: 10px;
   text-align: right;
   flex-basis: 30%;
 }
 
-/* Unit styling */
 .unit {
   margin-left: 10px;
   text-align: left;
   flex-basis: 30%;
-}
-
-/* Additional styles for right column */
-.right-column h4 {
-  margin-bottom: 10px;
-}
-
-.right-column p {
-  margin-bottom: 20px;
 }
 
 /* Full-width button styling */
@@ -148,60 +152,73 @@ h3 {
   transform: translateY(-2px);
 }
 
-/* Output group styles */
+/* ---------------------------------------------------
+/* OUTPUT STYLES
+/* --------------------------------------------------- */
+
 .output-group {
   margin-top: 50px;
+  text-align: left;
 }
 
+.output-group > div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  text-align: center;
+  line-height: 2;
+}
+
+/* Stack p elements vertically on small screens (less than 768px) */
+@media (max-width: 768px) {
+  .output-group > div {
+    grid-template-columns: 1fr; /* Single column layout */
+  }
+
+  .output {
+    text-align: left; /* Optional: Align text to the left on mobile for readability */
+    padding: 10px 0; /* Add padding for spacing */
+  }
+}
+
+/* Output text styling */
 .output {
-  font-size: 20px; /* Set the font size for output */
-  padding-top: 20px;
+  font-size: 1.25rem;
+  padding: 10px 0;
+  font-weight: 500;
 }
 
-/* Responsive layout for smaller screens */
-@media (max-width: 1000px) {
-  .container {
-    flex-direction: column; /* Stack columns vertically */
-  }
+/* Styling for output spans (values and units) */
+.output span {
+  font-weight: bold;
+}
 
-  .column {
-    width: 100%; /* Full width for each column on mobile */
-  }
 
+
+
+/* ---------------------------------------------------
+/* RESPONSIVE ADJUSTMENTS
+/* --------------------------------------------------- */
+
+@media (max-width: 768px) {
   .input-field {
-    width: 60%; /* Set input width to 60% for better fit */
-    max-width: 300px; /* Optional: Set a max-width for input fields */
-    margin: 0 auto; /* Center input fields */
+    width: 50%;
+    max-width: 100%;
   }
 
-  #Chart1, #Chart2, #Chart3 {
+  .full-width-button {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .column-image {
+    width: 100%;
+  }
+
+  #chartContainer1, #chartContainer2, #chartContainer3 {
     display: block;
     margin: 0 auto; /* Center the canvas */
     width: 100%; /* Keep width for charts */
-    height: 500px; /* Maintain height for charts */
+    height: 200px;
   }
 }
-
-/* Centering only the canvas (charts) */
-#Chart1, #Chart2, #Chart3 {
-  display: block;
-  margin: 0 auto; /* Center the canvas */
-  width: 100%; /* Keep width for charts */
-  height: 300px; /* Maintain height for charts */
-}
-
-/* Margin adjustments for output text */
-#Tmax, #Mmax_pos, #Mmax_neg, #Dmax {
-  margin-left: 10px;
-  margin-right: 10px;
-}
-
-/* Additional styles for headings and paragraphs */
-h4 {
-  margin: 20px 0 10px; /* Adjust margin for headings */
-}
-
-p {
-  margin-bottom: 20px; /* Bottom margin for paragraphs */
-}
-
